@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Dashboard</h3>
+            </div>
+            <ul class="nav">
+                <li><a href="#"><i class="fa fa-desktop"></i> Dashboard</a></li>
+                <li><a href="unbilled .html"><i class="fa fa-credit-card"></i> Unbilled Time</a></li>
+                <li><a href="#"><i class="fa fa-comment"></i> Text Messaging</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i> Email Messaging</a></li>
+                <li><a href="#"><i class="fa fa-phone"></i> Call Logs</a></li>
+                <li><a href="#"><i class="fa fa-microphone"></i> Voicemail</a></li>
+                <li><a href="#"><i class="fa fa-check-square"></i> Tasks</a></li>
+                <li><a href="#"><i class="fa fa-dollar-sign"></i> Deals</a></li>
+                <li><a href="#"><i class="fa fa-share-alt"></i> Referrals</a></li>
+                <li class="nav-header">Settings</li>
+                <li><a href="#"><i class="fa fa-cog"></i> Configuration</a></li>
+                <li><a href="#"><i class="fa fa-briefcase"></i> Management</a></li>
+                <li><a href="#"><i class="fa fa-chart-bar"></i> Reports</a>
+                    <ul class="sub-nav">
+                        <li><a href="#"> Call history</a></li>
+                        <li><a href="#"> Call queue</a></li>
+                        <li><a href="#"> Agents performance</a></li>
+                        <li><a href="#"> Commission report</a></li>
+                        <li><a href="#"> Scheduled report</a></li>
+                        <li><a href="#"> Chat history</a></li>
+                        <li><a href="#"> Performance report</a></li>
+                    </ul>
+
+            </ul>
+        </aside>
+
+        <div class="dashboard-container">
+            <header>
+                <h1>Overview</h1>
+            </header>
+
+            <section class="total-profit">
+                <h2>Total Profit</h2>
+                <canvas id="profitChart"></canvas>
+            </section>
+
+            <section class="total-revenue">
+                <h2>Total Revenue</h2>
+                <canvas id="revenueChart"></canvas>
+                <div class="revenue-details">
+                    <p><i class="fa fa-circle"></i> Invoice - 50k</p>
+                    <p><i class="fa fa-circle"></i> Online Sales - 95k</p>
+                    <p><i class="fa fa-circle"></i> Rental Income - 45k</p>
+                    <p><i class="fa fa-circle"></i> In-Person Sales - 18k</p>
+                </div>
+            </section>
+
+            <section class="total-outstanding">
+                <h2>Total Outstanding</h2>
+                <canvas id="outstandingChart"></canvas>
+            </section>
+
+            <section class="total-spending">
+                <h2>Total Spending</h2>
+                <canvas id="spendingChart"></canvas>
+                <div class="spending-details">
+                    <p><i class="fa fa-circle"></i> Supplies - $11k</p>
+                    <p><i class="fa fa-circle"></i> Employee Benefits - $7k</p>
+                    <p><i class="fa fa-circle"></i> Office Expenses - $1.5k</p>
+                    <p><i class="fa fa-circle"></i> Uncategorized - $2k</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

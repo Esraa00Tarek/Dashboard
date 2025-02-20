@@ -1,0 +1,204 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Stack sidebar and dashboard by default */
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 100%; /* Full width by default */
+    max-width: 250px; /*Original Width*/
+    background-color: #323432;
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    /* height: 100vh;  We will address height more carefully */
+    position: sticky; /* Stick to the top */
+    top: 0; /* Avoid covering by the header */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    order: 1; /* Place sidebar below header by default*/
+}
+
+.sidebar-header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav li {
+    margin-bottom: 10px;
+}
+
+.nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav a:hover {
+    background-color: #555;
+}
+
+.nav i {
+    margin-right: 10px;
+}
+
+.nav-header {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #aaa;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    padding-left: 15px;
+}
+
+.sub-nav {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.sub-nav li {
+    margin-bottom: 5px;
+}
+
+.sub-nav a {
+    font-size: 14px;
+    padding: 8px 10px;
+}
+
+/* Dashboard Container Styles */
+.dashboard-container {
+    flex: 1; /* Take up remaining space */
+    /*max-width: 1200px;*/ /*Remove max-width, it limits responsiveness*/
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted for responsiveness */
+    grid-gap: 20px;
+    box-sizing: border-box;
+    order: 2; /* Place dashboard below sidebar by default*/
+}
+
+header {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.dashboard-container>section {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.total-profit {
+    /*grid-column: span 2;*/ /* Modified for responsiveness */
+    grid-column: 1 / -1; /* Take full width on small screens */
+}
+
+.total-revenue {
+    /*grid-column: span 1;*/ /* Modified for responsiveness */
+}
+
+.total-outstanding {
+   /* grid-column: span 2;*/ /* Modified for responsiveness */
+   grid-column: 1 / -1; /* Take full width on small screens */
+}
+
+.total-spending {
+    /*grid-column: span 1;*/ /* Modified for responsiveness */
+}
+
+.unbilled-time {
+    grid-column: 1 / -1;
+}
+
+.dashboard-container>section>h2 {
+    margin-top: 0;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.total-revenue,
+.total-spending {
+    text-align: center;
+}
+
+.revenue-details,
+.spending-details {
+    margin-top: 10px;
+}
+
+.revenue-details p,
+.spending-details p {
+    margin-bottom: 5px;
+}
+
+.revenue-details i,
+.spending-details i {
+    color: #666;
+    margin-right: 5px;
+}
+
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row; /* Restore horizontal layout on larger screens */
+    }
+
+    .sidebar {
+        width: 250px; /* Restore sidebar width on larger screens */
+        height: 100vh;
+    }
+
+    .dashboard-container {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Restore multi-column layout */
+    }
+
+    .total-profit {
+        grid-column: span 2; /* Restore original column span */
+    }
+
+    .total-outstanding {
+        grid-column: span 2; /* Restore original column span */
+    }
+
+}
+
+/* Adjustments for very small screens */
+@media (max-width: 480px) {
+  .dashboard-container>section>h2 {
+      font-size: 24px; /* Smaller heading on very small screens */
+  }
+}

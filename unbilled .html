@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unbilled Time</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f8f9fa; /* Light gray background */
+            color: #343a40; /* Dark gray text */
+            margin: 0;
+            padding: 0;
+        }
+
+        .unbilled-time {
+            padding: 20px;
+            border: 1px solid #e9ecef; /* Light gray border */
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075); /* Subtle shadow */
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            margin: 20px auto;
+            max-width: 90%; /* Adjust as needed */
+        }
+
+        .unbilled-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .unbilled-header h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #495057; /* Slightly darker gray for headings */
+        }
+
+        .unbilled-header p {
+            margin-right: 10px;
+            margin-bottom: 5px;
+            color: #fd7e14; /* More vibrant orange */
+        }
+
+        .search-filters {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .search-filters input[type="search"] {
+            padding: 10px;
+            border: 1px solid #ced4da; /* Medium gray border */
+            border-radius: 4px;
+            margin-right: 5px;
+            width: 200px;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .search-filters input[type="search"]:focus {
+            border-color: #80bdff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+
+        .search-filters button {
+            padding: 10px 16px;
+            background-color: #007bff; /* Bootstrap primary color */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.15s ease-in-out;
+        }
+
+        .search-filters button:hover {
+            background-color: #0056b3;
+        }
+
+        .unbilled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        .unbilled-table th,
+        .unbilled-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6; /* Light gray border for table cells */
+        }
+
+        .unbilled-table th {
+            background-color: #e9ecef; /* Lighter gray for table headers */
+            font-weight: 500;
+        }
+
+        .unbilled-table tbody tr:hover {
+            background-color: #f5f5f5; /* Light gray on hover */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .unbilled-header {
+                align-items: center; /* Center items on smaller screens */
+            }
+
+            .search-filters {
+                flex-direction: column;
+                align-items: stretch; /* Stretch input and button to full width */
+            }
+
+            .search-filters input[type="search"] {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            .search-filters button {
+                width: 100%;
+            }
+
+            .unbilled-table {
+                overflow-x: auto; /* Enable horizontal scrolling for table */
+                display: block; /* Necessary for overflow-x to work */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="unbilled-time">
+        <div class="unbilled-header">
+            <h2>Unbilled Time</h2>
+            <p>40 invoices</p>
+            <div class="search-filters">
+                <input type="search" placeholder="Search">
+                <button>Filters</button>
+            </div>
+        </div>
+        <div style="overflow-x:auto;">
+        <table class="unbilled-table">
+            <thead>
+                <tr>
+                    <th>Company Name</th>
+                    <th>Email Address</th>
+                    <th>Status</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Lima</td>
+                    <td>support@lima.com</td>
+                    <td>Pending</td>
+                    <td>$2236</td>
+                </tr>
+                <tr>
+                    <td>Spotify</td>
+                    <td>finance@spotify.com</td>
+                    <td>Pending</td>
+                    <td>$32,235</td>
+                </tr>
+                <tr>
+                    <td>Shimmrly</td>
+                    <td>support@shimmrly.com</td>
+                    <td>Pending</td>
+                    <td>$66,205</td>
+                </tr>
+                <tr>
+                    <td>Mailchimp</td>
+                    <td>finance@mailchimp.com</td>
+                    <td>Pending</td>
+                    <td>$45,532</td>
+                </tr>
+                <tr>
+                    <td>Electronics Hub</td>
+                    <td>support@electronicshub.com</td>
+                    <td>Pending</td>
+                    <td>$10,000</td>
+                </tr>
+                <tr>
+                    <td>Figma</td>
+                    <td>support@figma.com</td>
+                    <td>Pending</td>
+                    <td>$15,236</td>
+                </tr>
+                <tr>
+                    <td>Alloha</td>
+                    <td>support@alloha.com</td>
+                    <td>Pending</td>
+                    <td>$41,000</td>
+                </tr>
+                <tr>
+                    <td>Zoom</td>
+                    <td>billing@zoom.us</td>
+                    <td>Pending</td>
+                    <td>$28,750</td>
+                </tr>
+                <tr>
+                    <td>Slack</td>
+                    <td>finance@slack.com</td>
+                    <td>Pending</td>
+                    <td>$54,120</td>
+                </tr>
+                <tr>
+                    <td>Notion</td>
+                    <td>support@notion.so</td>
+                    <td>Pending</td>
+                    <td>$18,900</td>
+                </tr>
+                <tr>
+                    <td>Atlassian</td>
+                    <td>billing@atlassian.com</td>
+                    <td>Pending</td>
+                    <td>$72,345</td>
+                </tr>
+                <tr>
+                    <td>Salesforce</td>
+                    <td>finance@salesforce.com</td>
+                    <td>Pending</td>
+                    <td>$95,000</td>
+                </tr>
+                <tr>
+                    <td>Adobe</td>
+                    <td>support@adobe.com</td>
+                    <td>Pending</td>
+                    <td>$35,680</td>
+                </tr>
+                <tr>
+                    <td>Microsoft</td>
+                    <td>billing@microsoft.com</td>
+                    <td>Pending</td>
+                    <td>$110,250</td>
+                </tr>
+
+            </tbody>
+        </table>
+        </div>
+    </section>
+</body>
+
+</html>
